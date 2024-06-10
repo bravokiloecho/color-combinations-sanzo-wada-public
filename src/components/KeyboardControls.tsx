@@ -2,22 +2,22 @@
 
 import * as React from 'react'
 
+import { useGlobalStateActions } from '@/state/useGlobalState'
+
 export default function KeyboardControls() {
+  const { toggleIndex, toggleAbout } = useGlobalStateActions()
   React.useEffect(() => {
-    // Close menu with escape key
-    // function handleKeydown(e: KeyboardEvent) {
-    //   if (e.key === 's' && IS_LOCAL) {
-    //     setShowStats()
-    //     return
-    //   }
-    //   if (e.key === 'Escape') {
-    //     setIsMenuOpen(false)
-    //   }
-    // }
-    // window.addEventListener('keydown', handleKeydown)
-    // return () => {
-    //   window.removeEventListener('keydown', handleKeydown)
-    // }
-  }, [])
+    // Close modals with escape key
+    function handleKeydown(e: KeyboardEvent) {
+      if (e.key === 'Escape') {
+        toggleAbout(false)
+        toggleIndex(false)
+      }
+    }
+    window.addEventListener('keydown', handleKeydown)
+    return () => {
+      window.removeEventListener('keydown', handleKeydown)
+    }
+  }, [toggleIndex, toggleAbout])
   return null
 }
