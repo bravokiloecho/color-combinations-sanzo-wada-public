@@ -1,0 +1,136 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* #region  /**=========== Primary Color =========== */
+  /* !STARTERCONF Customize these variable, copy and paste from /styles/colors.css for list of colors */
+  /* #endregion  /**======== Primary Color =========== */
+}
+
+html.lenis {
+  height: auto;
+  @apply md:table;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+@layer base {
+  /* #region  /**=========== Typography =========== */
+  html,
+  body {
+    @apply bg-white text-black;
+  }
+
+  body {
+    @apply font-primary overflow-y-scroll;
+  }
+
+  .h0 {
+    @apply font-primary text-3xl font-bold md:text-5xl;
+  }
+
+  .h1 {
+    @apply font-primary text-4xl;
+  }
+
+  .h2 {
+    @apply font-primary text-4xl;
+  }
+
+  .h3 {
+    @apply text-2xl;
+    /* letter-spacing: 0.04em; */
+  }
+
+  .h4 {
+    @apply font-primary text-base font-bold md:text-lg;
+  }
+
+  .p--small {
+    @apply font-primary;
+    font-size: 14px;
+  }
+  /* #endregion  /**======== Typography =========== */
+
+  .layout {
+    /* 1100px */
+    max-width: 68.75rem;
+    @apply mx-auto w-11/12;
+  }
+
+  /* Class to adjust with sticky footer */
+  .min-h-main {
+    @apply min-h-[calc(100vh-56px)];
+  }
+
+  a,
+  button {
+    @apply cursor-pointer;
+    outline: 0;
+  }
+}
+
+@layer components {
+  .button {
+    @apply px-2 sm:px-3 py-2 border border-black rounded-[4px] hover:border-blue bg-white;
+    @apply text-sm sm:text-base;
+  }
+
+  .text--block {
+    line-height: 1.5;
+    p {
+      @apply mb-4 last:mb-0;
+    }
+    a {
+      @apply underline hover:text-blue;
+    }
+  }
+
+  .content--padding {
+    @apply px-4 sm:px-6 md:px-8;
+  }
+
+  .content--margin {
+    @apply mx-8;
+  }
+
+  .header--width--md {
+    /* 371 is nav width */
+    max-width: calc(100% - 371px - 2rem);
+    transform: translateY(-1px);
+  }
+
+  .copy--tooltip {
+    @apply absolute top-0 right-0 p--small group-hover:opacity-100 opacity-0 pointer-events-none;
+    transform: translate(100%, 2px) translateX(0.5rem);
+  }
+}
+
+@layer utilities {
+  .fixed--fill {
+    @apply fixed top-0 left-0 w-full h-full;
+  }
+
+  .absolute--fill {
+    @apply absolute top-0 left-0 w-full h-full;
+  }
+
+  .absolute--center {
+    @apply absolute bottom-1/2 right-1/2 transform translate-x-1/2 translate-y-1/2;
+  }
+}
